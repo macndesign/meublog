@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block author %}{{ object.autor }}{% endblock %}
+{% block description %}{{ object.titulo }}{% endblock %}
+{% block keywords %}{% for tag in object.tags.all %}{{ tag }}{% if not forloop.last %},{% endif %}{% endfor %}{% endblock %}
+{% block content %}
+    <header>
+        <hgroup>
+            <h2>{{ object.titulo }}</h2>
+            <h3>{{ object.sub_titulo }}</h3>
+        </hgroup>
+        Em <time pubdate datetime="{{ object.data_publicacao|date:"Y-m-d\TH:m\Z" }}">{{ object.data_publicacao }}</time>
+        por {{ object.publicado_por|capfirst }}
+    </header>
+    <div class="conteudo">
+        {{ object.conteudo|escape|linebreaks }}
+    </div>
+{% endblock %}
