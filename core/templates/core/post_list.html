@@ -1,57 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <table>
-    <thead>
-    <tr>
-        <th>autor</th>
-        <th>titulo</th>
-        <th>sub_titulo</th>
-        <th>data_publicacao</th>
-        <th>conteudo</th>
-        <th>slug</th>
-        <th>tags</th>
-    </tr>
-    </thead>
-    <tbody>
     {% for post in page_obj %}
-        <tr>
-            <th>{{ post.autor }}</th>
-            <th><a href="{{ post.get_absolute_url }}">{{ post.titulo }}</a></th>
-            <th>{{ post.sub_titulo }}</th>
-            <th>{{ post.data_publicacao }}</th>
-            <th>{{ post.conteudo }}</th>
-            <th>{{ post.slug }}</th>
-            <th>
-                {% for tag in post.tags.all %}
-                {{ tag }}{% if not forloop.last %}, {% endif %}
-                {% endfor %}
-            </th>
-        </tr>
+        <article>
+            <hgroup>
+                <h2><a href="{{ post.get_absolute_url }}">{{ post.titulo }}</a></h2>
+                <h3>
+                    Em <time pubdate datetime="{{ post.data_publicacao|date:"Y-m-d\TH:m\Z" }}">{{ post.data_publicacao }}</time>
+                    por {{ post.autor|capfirst }}
+                </h3>
+            </hgroup>
+            {{ post.conteudo }}
+            <div class="tags">
+                <strong>Tags: </strong>{% for tag in post.tags.all %}{{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}
+            </div>
+        </article>
     {% empty %}
-        <tr>
-            <td colspan="9">Não há postagens</td>
-        </tr>
+        <article>
+            <h2>Não há artigos</h2>
+        </article>
     {% endfor %}
-        <tr>
-            <td colspan="9">
-                <div class="pagination">
-                    <span class="step-links">
-                        {% if page_obj.has_previous %}
-                            <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-                        {% endif %}
-
-                        <span class="current">
-                            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
-                        </span>
-
-                        {% if page_obj.has_next %}
-                            <a href="?page={{ page_obj.next_page_number }}">Próxima</a>
-                        {% endif %}
-                    </span>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-    </table>
 {% endblock %}

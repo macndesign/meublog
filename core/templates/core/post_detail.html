@@ -9,9 +9,11 @@
             <h3>{{ object.sub_titulo }}</h3>
         </hgroup>
         Em <time pubdate datetime="{{ object.data_publicacao|date:"Y-m-d\TH:m\Z" }}">{{ object.data_publicacao }}</time>
-        por {{ object.publicado_por|capfirst }}
+        por {{ object.autor|capfirst }}
     </header>
-    <div class="conteudo">
-        {{ object.conteudo|escape|linebreaks }}
+    {{ object.conteudo|escape|linebreaks }}
+    <div class="tags">
+        <strong>Tags: </strong>
+        {% for tag in post.tags.all %}{{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}
     </div>
 {% endblock %}
