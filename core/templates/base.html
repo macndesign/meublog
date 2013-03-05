@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="author" content="{% block author %}{% endblock %}">
+    <meta name="author" content="{% block author %}Mario Chaves <macndesign@gmail.com>{% endblock %}">
     <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="keywords" content="{% block keywords %}{% endblock %}">
     <title>{% block title %}Base{% endblock %} - Blog</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
 </head>
 <body>
-<header><h1>01BLG</h1></header>
-<nav>
-    <a href="{% url "post:listar" %}">Listar</a>
-    <a href="{% url "post:criar" %}">Criar</a>
-</nav>
+<header role="banner">
+    <h1>01BLG</h1>
+    <nav role="navigation">
+        <a href="{% url "post:listar" %}">Listar</a>
+        <a href="{% url "post:criar" %}">Criar</a>
+    </nav>
+</header>
 <main>
     {% if messages %}
         <ul class="messages">
@@ -21,8 +23,9 @@
             {% endfor %}
         </ul>
     {% endif %}
-    {% block content %}{% endblock %}
+    <section role="main">{% block content %}{% endblock %}</section>
+    <aside>{% block aside %}{% endblock %}</aside>
 </main>
-<footer>&copy; 2013 01BLG</footer>
+<footer role="contentinfo">&copy; 2013 01BLG</footer>
 </body>
 </html>
