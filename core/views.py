@@ -2,11 +2,12 @@
 from core.models import Post
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404, redirect
 from core.forms import PostForm
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.urlresolvers import reverse_lazy
 
 
 # FBV - Function Based-Views
@@ -66,6 +67,11 @@ def update(request, pk):
     return render(request, 'core/post_form.html', {'form': form})
 
 
+def delete(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+
+
+
 # CBV - Class Based-Views
 
 
@@ -100,3 +106,11 @@ class PostUpdateView(UpdateView):
     def form_invalid(self, form):
         messages.error(self.request, u'O formulário está inválido.')
         return super(PostUpdateView, self).form_invalid(form)
+
+
+class PostDeleteView(DeleteView):
+    model = Post
+
+    def get_success_url(self):
+        messages.success(self.request, u'Postagem excluída com sucesso.')
+        return reverse_lazy('post:listar')

@@ -8,6 +8,10 @@
     <a href="/excluir/{{ object.pk }}">Excluir</a>
 {% endblock %}
 {% block content %}
+    <form method="post">{% csrf_token %}
+        Deseja realmente excluir o artigo?
+        <input type="submit" value="Sim" /> <input type="button" onclick="history.back()" value="Não">
+    </form>
     <header>
         <hgroup>
             <h2>{{ object.titulo }}</h2>
