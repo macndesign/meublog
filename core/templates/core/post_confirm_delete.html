@@ -17,8 +17,8 @@
             <h2>{{ object.titulo }}</h2>
             <h3>{{ object.sub_titulo }}</h3>
         </hgroup>
-        Em <time pubdate datetime="{{ object.data_publicacao|date:"c" }}">{{ object.data_publicacao|date:"D d M Y" }}</time>
-        por {{ object.autor|capfirst }}
+        Em <time pubdate datetime="{{ object.data_publicacao|date:"c" }}">{{ object.data_publicacao }}</time>
+        por {% if not object.autor.first_name and not object.autor.last_name %}{{ object.autor.username|capfirst }} {% endif %}{% if object.autor.first_name %}{{ object.autor.first_name }} {% endif %}{% if object.autor.last_name %}{{ object.autor.last_name }} {% endif %}
     </header>
     {{ object.conteudo|escape|linebreaks }}
     <div class="tags">

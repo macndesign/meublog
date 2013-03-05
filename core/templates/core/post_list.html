@@ -6,8 +6,8 @@
             <hgroup>
                 <h2><a href="{{ post.get_absolute_url }}">{{ post.titulo }}</a></h2>
                 <h3>
-                    Em <time pubdate datetime="{{ post.data_publicacao|date:"Y-m-d\TH:m\Z" }}">{{ post.data_publicacao }}</time>
-                    por {{ post.autor|capfirst }}
+                    Em <time pubdate datetime="{{ post.data_publicacao|date:"c" }}">{{ post.data_publicacao }}</time>
+                    por {% if not post.autor.first_name and not post.autor.last_name %}{{ post.autor.username|capfirst }} {% endif %}{% if post.autor.first_name %}{{ post.autor.first_name }} {% endif %}{% if post.autor.last_name %}{{ post.autor.last_name }} {% endif %}
                 </h3>
             </hgroup>
             {{ post.conteudo }}
