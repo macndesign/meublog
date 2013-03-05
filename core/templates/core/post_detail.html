@@ -2,6 +2,10 @@
 {% block author %}{{ object.autor }}{% endblock %}
 {% block description %}{{ object.titulo }}{% endblock %}
 {% block keywords %}{% for tag in object.tags.all %}{{ tag }}{% if not forloop.last %},{% endif %}{% endfor %}{% endblock %}
+{% block nav %}
+    {{ block.super }}
+    <a href="/alterar/{{ object.pk }}">Alterar</a>
+{% endblock %}
 {% block content %}
     <header>
         <hgroup>
