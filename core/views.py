@@ -69,7 +69,12 @@ def update(request, pk):
 
 def delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        post.delete()
+        messages.success(request, u'Postagem excluída com sucesso.')
+        return redirect(reverse_lazy('post:list'))
 
+    return render(request, 'core/post_confirm_delete.html', {'object': post})
 
 
 # CBV - Class Based-Views

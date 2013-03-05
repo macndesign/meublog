@@ -15,4 +15,5 @@ urlpatterns = patterns('',
     url(r'^update/(?P<pk>\d+)/', 'core.views.update', name='update'),
 
     url(r'^excluir/(?P<pk>\d+)/$', PostDeleteView.as_view(), name='excluir'),
+    url(r'^delete/(?P<pk>\d+)/$', 'core.views.delete', name='delete'),
 )
