@@ -115,6 +115,11 @@ ROOT_URLCONF = 'meublog.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'meublog.wsgi.application'
 
+import django.conf.global_settings as DEFAULT_SETTINGS
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+    'core.context_processors.view_in_all_pages',
+)
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.

@@ -15,7 +15,6 @@ from taggit.models import Tag
 
 def post_list(request):
     posts = Post.objects.all()
-    tags = Tag.objects.all()
 
     # Mostra 25 posts por página
     paginator = Paginator(posts, 5)
@@ -30,12 +29,12 @@ def post_list(request):
         # Se a página está fora da faixa (e.g. 9999), mostra a ultima página.
         page_obj = paginator.page(paginator.num_pages)
 
-    return render(request, 'core/post_list.html', {'page_obj': page_obj, 'tags': tags})
+    return render(request, 'core/post_list.html', {'page_obj': page_obj})
 
 
-def post_list_tagged_related(request, pk):
-    tag = get_object_or_404(Tag, pk=pk)
-    post_list_tagged_related = Post.objects.filter(tags__name__in=[tag.name])
+def post_list_tagged_related(request, slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    post_list_tagged_related = Post.objects.filter(tags__name__in=[tag.slug])
     return render(request, 'core/post_list_tagged_related.html', {'post_list_tagged_related': post_list_tagged_related,
                                                                   'tag_name': tag.name})
 

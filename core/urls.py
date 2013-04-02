@@ -6,7 +6,7 @@ urlpatterns = patterns('',
                        url(r'^list/$', 'core.views.post_list', name='list'),
 
                        # posts relacionados a uma tag
-                       url(r'^posts-tagged-related/(?P<pk>\d+)/$', 'core.views.post_list_tagged_related',
+                       url(r'^posts-tagged-related/(?P<slug>[\w_-]+)/$', 'core.views.post_list_tagged_related',
                            name='posts-tagged-related'),
 
                        url(r'^(?P<pk>\d+)/$', PostDetailView.as_view(), name='detalhar'),

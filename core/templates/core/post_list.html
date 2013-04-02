@@ -39,7 +39,7 @@
     <ul id="tags">
         {% for tag in tags %}
             {% if tag.taggit_taggeditem_items.count %}
-            <li><a href="{% url "post:posts-tagged-related" tag.pk %}">{{ tag.name }} ({{ tag.taggit_taggeditem_items.count }})</a></li>
+            <li><a href="{% url "post:posts-tagged-related" tag.slug %}">{{ tag.name }} ({{ tag.taggit_taggeditem_items.count }})</a></li>
             {% endif %}
         {% endfor %}
     </ul>
