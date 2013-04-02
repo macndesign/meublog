@@ -8,12 +8,14 @@ from core.forms import PostForm
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse_lazy
+from taggit.models import Tag
 
 
 # FBV - Function Based-Views
 
 def post_list(request):
     posts = Post.objects.all()
+    tags = Tag.objects.all()
 
     # Mostra 25 posts por página
     paginator = Paginator(posts, 5)
@@ -28,7 +30,14 @@ def post_list(request):
         # Se a página está fora da faixa (e.g. 9999), mostra a ultima página.
         page_obj = paginator.page(paginator.num_pages)
 
-    return render(request, 'core/post_list.html', {'page_obj': page_obj})
+    return render(request, 'core/post_list.html', {'page_obj': page_obj, 'tags': tags})
+
+
+def post_list_tagged_related(request, pk):
+    tag = get_object_or_404(Tag, pk=pk)
+    post_list_tagged_related = Post.objects.filter(tags__name__in=[tag.name])
+    return render(request, 'core/post_list_tagged_related.html', {'post_list_tagged_related': post_list_tagged_related,
+                                                                  'tag_name': tag.name})
 
 
 def post_detail(request, pk):
