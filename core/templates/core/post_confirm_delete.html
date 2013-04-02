@@ -1,28 +1,37 @@
 {% extends 'base.html' %}
-{% block author %}{% if not object.autor.first_name or not object.autor.last_name %}{{ object.autor.username|capfirst }} {% endif %}{% if object.autor.first_name %}{{ object.autor.first_name }} {% endif %}{% if object.autor.last_name %}{{ object.autor.last_name }} {% endif %}{% if object.autor.email %}<{{ object.autor.email }}>{% endif %}{% endblock %}
+{% load i18n %}
+{% block author %}
+    {% if not object.autor.first_name or not object.autor.last_name %}{{ object.autor.username|capfirst }} {% endif %}
+    {% if object.autor.first_name %}{{ object.autor.first_name }} {% endif %}
+    {% if object.autor.last_name %}{{ object.autor.last_name }} {% endif %}
+    {% if object.autor.email %}<{{ object.autor.email }}>{% endif %}
+{% endblock %}
 {% block description %}{{ object.titulo }}{% endblock %}
 {% block keywords %}{% for tag in object.tags.all %}{{ tag }}{% if not forloop.last %},{% endif %}{% endfor %}{% endblock %}
 {% block nav %}
     {{ block.super }}
-    <a href="/alterar/{{ object.pk }}">Alterar</a>
-    <a href="/excluir/{{ object.pk }}">Excluir</a>
+    <a href="/alterar/{{ object.pk }}">{% trans "Alterar" %}</a>
+    <a href="/excluir/{{ object.pk }}">{% trans "Excluir" %}</a>
 {% endblock %}
 {% block content %}
     <form method="post">{% csrf_token %}
-        Deseja realmente excluir o artigo?
-        <input type="submit" value="Sim" /> <input type="button" onclick="history.back()" value="Não">
+        {% trans "Deseja realmente excluir o artigo?" %}
+        <input type="submit" value="{% trans 'Sim' %}" />
+        <input type="button" onclick="history.back()" value="{% trans 'Não' %}">
     </form>
     <header>
         <hgroup>
             <h2>{{ object.titulo }}</h2>
             <h3>{{ object.sub_titulo }}</h3>
         </hgroup>
-        Em <time pubdate datetime="{{ object.data_publicacao|date:"c" }}">{{ object.data_publicacao }}</time>
-        por {% if not object.autor.first_name and not object.autor.last_name %}{{ object.autor.username|capfirst }} {% endif %}{% if object.autor.first_name %}{{ object.autor.first_name }} {% endif %}{% if object.autor.last_name %}{{ object.autor.last_name }} {% endif %}
+        {% trans "Em" %} <time pubdate datetime="{{ object.data_publicacao|date:"c" }}">{{ object.data_publicacao }}</time>
+        {% trans "por" %} {% if not object.autor.first_name and not object.autor.last_name %}{{ object.autor.username|capfirst }} {% endif %}
+        {% if object.autor.first_name %}{{ object.autor.first_name }} {% endif %}
+        {% if object.autor.last_name %}{{ object.autor.last_name }} {% endif %}
     </header>
     {{ object.conteudo|escape|linebreaks }}
     <div class="tags">
-        <strong>Tags: </strong>
+        <strong>{% trans "Tags" %}: </strong>
         {% for tag in post.tags.all %}{{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}
     </div>
 {% endblock %}
