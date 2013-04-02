@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-02 14:13-0300\n"
+"POT-Creation-Date: 2013-04-02 15:17-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,35 +18,35 @@ msgstr ""
 
 #: .\core\models.py:11
 msgid "Selecione o autor da postagem"
-msgstr ""
+msgstr "Select the author's post"
 
 #: .\core\models.py:14
 msgid "Título"
-msgstr ""
+msgstr "Title"
 
 #: .\core\models.py:16
 msgid "Digite um título adequado para a postagem"
-msgstr ""
+msgstr "Type a title for the blog post"
 
 #: .\core\models.py:19
 msgid "Sub-título"
-msgstr ""
+msgstr "Sub-title"
 
 #: .\core\models.py:21
 msgid "Digite um sub-título adequado para a postagem"
-msgstr ""
+msgstr "Type a sub-title for the post blog"
 
 #: .\core\models.py:24
 msgid "Data de publicação"
-msgstr ""
+msgstr "Published date"
 
 #: .\core\models.py:29
 msgid "Conteúdo"
-msgstr ""
+msgstr "Content"
 
 #: .\core\templates\base.html.py:8
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 #: .\core\templates\base.html.py:13
 msgid "01BLG"
@@ -54,80 +54,84 @@ msgstr "MyBlog EN-US"
 
 #: .\core\templates\base.html.py:16
 msgid "Listar"
-msgstr ""
+msgstr "List"
 
 #: .\core\templates\base.html.py:17
 msgid "Criar"
-msgstr ""
+msgstr "New"
 
 #: .\core\templates\base.html.py:45
 msgid "2013 01BLG"
-msgstr ""
+msgstr "2013 My Blog"
 
 #: .\core\templates\core\post_confirm_delete.html.py:13
 #: .\core\templates\core\post_detail.html.py:8
 msgid "Alterar"
-msgstr ""
+msgstr "Update"
 
 #: .\core\templates\core\post_confirm_delete.html.py:14
 #: .\core\templates\core\post_detail.html.py:9
 msgid "Excluir"
-msgstr ""
+msgstr "Remove"
 
 #: .\core\templates\core\post_confirm_delete.html.py:18
 msgid "Deseja realmente excluir o artigo?"
-msgstr ""
+msgstr "Are you wish remove the article?"
 
 #: .\core\templates\core\post_confirm_delete.html.py:19
 msgid "Sim"
-msgstr ""
+msgstr "Yes"
 
 #: .\core\templates\core\post_confirm_delete.html.py:20
 msgid "Não"
-msgstr ""
+msgstr "No"
 
 #: .\core\templates\core\post_confirm_delete.html.py:27
 #: .\core\templates\core\post_detail.html.py:17
 #: .\core\templates\core\post_list.html.py:10
 msgid "Em"
-msgstr ""
+msgstr "When"
 
 #: .\core\templates\core\post_confirm_delete.html.py:28
 #: .\core\templates\core\post_detail.html.py:18
 #: .\core\templates\core\post_list.html.py:11
 msgid "por"
-msgstr ""
+msgstr "by"
 
 #: .\core\templates\core\post_confirm_delete.html.py:34
 #: .\core\templates\core\post_detail.html.py:24
 #: .\core\templates\core\post_list.html.py:18
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: .\core\templates\core\post_list.html.py:3
 msgid "Publicações"
-msgstr ""
+msgstr "Publications"
 
 #: .\core\templates\core\post_list.html.py:23
 msgid "Não há artigos"
-msgstr ""
+msgstr "Without articles"
 
 #: .\core\templates\core\post_list.html.py:28
 msgid "Anterior"
-msgstr ""
+msgstr "Previous"
 
 #: .\core\templates\core\post_list.html.py:31
 msgid "Página"
-msgstr ""
+msgstr "Page"
+
+#: .\core\templates\core\post_list.html.py:31
+msgid "de"
+msgstr "of"
 
 #: .\core\templates\core\post_list.html.py:34
 msgid "Próxima"
-msgstr ""
+msgstr "Next"
 
 #: .\meublog\settings.py:37
 msgid "Portuguese Brazil"
-msgstr ""
+msgstr "Portuguese Brazil"
 
 #: .\meublog\settings.py:38
 msgid "English US"
-msgstr ""
+msgstr "English US"

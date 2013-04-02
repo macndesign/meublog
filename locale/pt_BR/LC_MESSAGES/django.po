@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-02 14:13-0300\n"
+"POT-Creation-Date: 2013-04-02 15:17-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,6 +119,10 @@ msgstr ""
 
 #: .\core\templates\core\post_list.html.py:31
 msgid "Página"
+msgstr ""
+
+#: .\core\templates\core\post_list.html.py:31
+msgid "de"
 msgstr ""
 
 #: .\core\templates\core\post_list.html.py:34
