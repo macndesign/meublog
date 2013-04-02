@@ -33,7 +33,6 @@ TIME_ZONE = 'America/Fortaleza'
 LANGUAGE_CODE = 'pt-br'
 
 ugettext = lambda s: s
-
 LANGUAGES = (
     ('pt-br', ugettext('Portuguese Brazil')),
     ('en', ugettext('English US')),
@@ -99,14 +98,16 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # Locale
     'django.middleware.locale.LocaleMiddleware',
-
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+LOCALE_PATHS = (
+    PROJECT_DIR.parent.child('locale'),
 )
 
 ROOT_URLCONF = 'meublog.urls'
