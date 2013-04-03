@@ -2,36 +2,38 @@
 {% load i18n %}
 {% block title %}{% trans "Publicações" %}{% endblock %}
 {% block content %}
+    <h3>{% trans "Publicações" %}</h3>
     {% for post in page_obj %}
         <article>
             <hgroup>
-                <h2><a href="{{ post.get_absolute_url }}">{{ post.titulo }}</a></h2>
-                <h3>
+                <h4><a href="{{ post.get_absolute_url }}">{{ post.titulo }}</a></h4>
+                <h5>
                     {% trans "Em" %} <time pubdate datetime="{{ post.data_publicacao|date:"c" }}">{{ post.data_publicacao }}</time>
                     {% trans "por" %} {% if not post.autor.first_name and not post.autor.last_name %}{{ post.autor.username|capfirst }} {% endif %}
                     {% if post.autor.first_name %}{{ post.autor.first_name }} {% endif %}
                     {% if post.autor.last_name %}{{ post.autor.last_name }} {% endif %}
-                </h3>
+                </h5>
             </hgroup>
             {{ post.conteudo }}
             <div class="tags">
-                <strong>{% trans "Tags" %}: </strong>{% for tag in post.tags.all %}{{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                <strong>{% trans "Tags" %}: </strong>{% for tag in post.tags.all %}<span class="label">{{ tag }}</span> {% endfor %}
             </div>
         </article>
     {% empty %}
         <article>
-            <h2>{% trans "Não há artigos" %}</h2>
+            <h4>{% trans "Não há artigos" %}</h4>
         </article>
     {% endfor %}
+
     <div class="pagination">
-        {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">{% trans "Anterior" %}</a>
-        {% endif %}
-        <span class="current">
-            {% trans "Página" %} {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
-        </span>
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">{% trans "Próxima" %}</a>
-        {% endif %}
+        <ul>
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}">{% trans "Anterior" %}</a></li>
+            {% endif %}
+            <li><span>{% trans "Página" %} {{ page_obj.number }} {% trans "de" %} {{ page_obj.paginator.num_pages }}</span></li>
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}">{% trans "Próxima" %}</a></li>
+            {% endif %}
+        </ul>
     </div>
 {% endblock %}

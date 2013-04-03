@@ -1,0 +1,138 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-02 15:17-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\core\models.py:11
+msgid "Selecione o autor da postagem"
+msgstr ""
+
+#: .\core\models.py:14
+msgid "Título"
+msgstr ""
+
+#: .\core\models.py:16
+msgid "Digite um título adequado para a postagem"
+msgstr ""
+
+#: .\core\models.py:19
+msgid "Sub-título"
+msgstr ""
+
+#: .\core\models.py:21
+msgid "Digite um sub-título adequado para a postagem"
+msgstr ""
+
+#: .\core\models.py:24
+msgid "Data de publicação"
+msgstr ""
+
+#: .\core\models.py:29
+msgid "Conteúdo"
+msgstr ""
+
+#: .\core\templates\base.html.py:8
+msgid "Base"
+msgstr ""
+
+#: .\core\templates\base.html.py:13
+msgid "01BLG"
+msgstr "Blog PT-BR"
+
+#: .\core\templates\base.html.py:16
+msgid "Listar"
+msgstr "Home"
+
+#: .\core\templates\base.html.py:17
+msgid "Criar"
+msgstr "Novo"
+
+#: .\core\templates\base.html.py:45
+msgid "2013 01BLG"
+msgstr "2013 Blog"
+
+#: .\core\templates\core\post_confirm_delete.html.py:13
+#: .\core\templates\core\post_detail.html.py:8
+msgid "Alterar"
+msgstr ""
+
+#: .\core\templates\core\post_confirm_delete.html.py:14
+#: .\core\templates\core\post_detail.html.py:9
+msgid "Excluir"
+msgstr ""
+
+#: .\core\templates\core\post_confirm_delete.html.py:18
+msgid "Deseja realmente excluir o artigo?"
+msgstr ""
+
+#: .\core\templates\core\post_confirm_delete.html.py:19
+msgid "Sim"
+msgstr ""
+
+#: .\core\templates\core\post_confirm_delete.html.py:20
+msgid "Não"
+msgstr ""
+
+#: .\core\templates\core\post_confirm_delete.html.py:27
+#: .\core\templates\core\post_detail.html.py:17
+#: .\core\templates\core\post_list.html.py:10
+msgid "Em"
+msgstr ""
+
+#: .\core\templates\core\post_confirm_delete.html.py:28
+#: .\core\templates\core\post_detail.html.py:18
+#: .\core\templates\core\post_list.html.py:11
+msgid "por"
+msgstr ""
+
+#: .\core\templates\core\post_confirm_delete.html.py:34
+#: .\core\templates\core\post_detail.html.py:24
+#: .\core\templates\core\post_list.html.py:18
+msgid "Tags"
+msgstr ""
+
+#: .\core\templates\core\post_list.html.py:3
+msgid "Publicações"
+msgstr ""
+
+#: .\core\templates\core\post_list.html.py:23
+msgid "Não há artigos"
+msgstr ""
+
+#: .\core\templates\core\post_list.html.py:28
+msgid "Anterior"
+msgstr "«"
+
+#: .\core\templates\core\post_list.html.py:31
+msgid "Página"
+msgstr ""
+
+#: .\core\templates\core\post_list.html.py:31
+msgid "de"
+msgstr ""
+
+#: .\core\templates\core\post_list.html.py:34
+msgid "Próxima"
+msgstr "»"
+
+#: .\meublog\settings.py:37
+msgid "Portuguese Brazil"
+msgstr ""
+
+#: .\meublog\settings.py:38
+msgid "English US"
+msgstr ""
