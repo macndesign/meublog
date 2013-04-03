@@ -1,47 +1,106 @@
 {% load i18n %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% trans "Base" %}{% endblock %} - Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="{% block author %}Mario Chaves <macndesign@gmail.com>{% endblock %}">
     <meta name="description" content="{% block description %}Blog do Mário sobre tecnologia em HTM5{% endblock %}">
     <meta name="keywords" content="{% block keywords %}blog,html5,mario,tecnologia,web{% endblock %}">
-    <title>{% block title %}{% trans "Base" %}{% endblock %} - Blog</title>
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+
+    <!-- Le styles -->
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="{{ STATIC_URL }}js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="{{ STATIC_URL }}ico/favicon.png">
 </head>
+
 <body>
-<header role="banner">
-    <h1>{% trans "01BLG" %}</h1>
-    <nav role="navigation">
-        {% block nav %}
-            <a href="{% url "post:listar" %}">{% trans "Listar" %}</a>
-            <a href="{% url "post:criar" %}">{% trans "Criar" %}</a>
-        {% endblock %}
-        {% block lang %}
-            <form action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                <input name="next" type="hidden" value="{{ redirect_to }}" />
-                <select name="language">
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    {% for language in languages %}
-                        <option value="{{ language.code }}">{{ language.name_local }} ({{ language.code }})</option>
-                    {% endfor %}
-                </select>
-                <input type="submit" value="Go" />
-            </form>
-        {% endblock %}
-    </nav>
-</header>
-<main>
+
+<div class="container-narrow">
+
+    <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+            {% block nav %}
+            <li class="menu-listar"><a href="{% url "post:listar" %}">{% trans "Listar" %}</a></li>
+            <li class="menu-criar"><a href="{% url "post:criar" %}">{% trans "Criar" %}</a></li>
+            {% endblock %}
+        </ul>
+        <h3 class="muted"><a href="{% url 'post:listar' %}">{% trans "01BLG" %}</a></h3>
+    </div>
+
+    <hr>
+
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
+        <hr>
     {% endif %}
-    <section role="main">{% block content %}{% endblock %}</section>
-    <aside>{% block aside %}{% endblock %}</aside>
-</main>
-<footer role="contentinfo">&copy; {% trans "2013 01BLG" %}</footer>
+
+    <div class="row-fluid marketing">
+        <div class="span8">
+            {% block content %}{% endblock %}
+        </div>
+
+        <div class="span4">
+            <ul id="tags">
+                {% for tag in tags %}
+                    {% if tag.taggit_taggeditem_items.count %}
+                        <li><a href="{% url "post:posts-tagged-related" tag.slug %}">{{ tag.name }} ({{ tag.taggit_taggeditem_items.count }})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="footer">
+        <div class="row-fluid">
+            <div class="span6">&copy; {% trans "2013 01BLG" %}</div>
+            <div class="span6">
+                <form class="lang form-inline" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}" />
+                    <select name="language">
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                            <option value="{{ language.code }}">{{ language.name_local }} ({{ language.code }})</option>
+                        {% endfor %}
+                    </select>
+                    <input class="btn" type="submit" value="Go" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ STATIC_URL }}js/jquery.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            $("li.menu-listar").addClass("active");
+        });
+    </script>
+{% endblock %}
 </body>
 </html>

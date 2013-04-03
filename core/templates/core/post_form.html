@@ -1,8 +1,25 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
+{% block nav %}
+    {{ block.super }}
+    {% if not CREATE %}
+    <li class="menu-alterar"><a href="/alterar/{{ object.pk }}">{% trans "Alterar" %}</a></li>
+    {% endif %}
+{% endblock %}
 {% block content %}
     <form method="post">{% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Salvar">
     </form>
+{% endblock %}
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            {% if CREATE %}
+                $("li.menu-criar").addClass("active");
+            {% else %}
+                $("li.menu-alterar").addClass("active");
+            {% endif %}
+        });
+    </script>
 {% endblock %}

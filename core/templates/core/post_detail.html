@@ -5,8 +5,8 @@
 {% block keywords %}{% for tag in object.tags.all %}{{ tag }}{% if not forloop.last %},{% endif %}{% endfor %}{% endblock %}
 {% block nav %}
     {{ block.super }}
-    <a href="/alterar/{{ object.pk }}">{% trans "Alterar" %}</a>
-    <a href="/excluir/{{ object.pk }}">{% trans "Excluir" %}</a>
+    <li class="menu-alterar"><a href="/alterar/{{ object.pk }}">{% trans "Alterar" %}</a></li>
+    <li class="menu-excluir"><a href="/excluir/{{ object.pk }}">{% trans "Excluir" %}</a></li>
 {% endblock %}
 {% block content %}
     <header>

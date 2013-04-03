@@ -55,15 +55,15 @@ msgstr "Blog PT-BR"
 
 #: .\core\templates\base.html.py:16
 msgid "Listar"
-msgstr ""
+msgstr "Home"
 
 #: .\core\templates\base.html.py:17
 msgid "Criar"
-msgstr ""
+msgstr "Novo"
 
 #: .\core\templates\base.html.py:45
 msgid "2013 01BLG"
-msgstr ""
+msgstr "2013 Blog"
 
 #: .\core\templates\core\post_confirm_delete.html.py:13
 #: .\core\templates\core\post_detail.html.py:8

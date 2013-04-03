@@ -56,7 +56,7 @@ def create(request):
 
     else:
         form = PostForm()
-    return render(request, 'core/post_form.html', {'form': form})
+    return render(request, 'core/post_form.html', {'form': form, 'CREATE': True})
 
 
 def update(request, pk):
@@ -72,7 +72,7 @@ def update(request, pk):
 
     else:
         form = PostForm(instance=post)
-    return render(request, 'core/post_form.html', {'form': form})
+    return render(request, 'core/post_form.html', {'form': form, 'CREATE': False})
 
 
 def delete(request, pk):
@@ -100,6 +100,11 @@ class PostDetailView(DetailView):
 class PostCreateView(CreateView):
     model = Post
 
+    def get_context_data(self, **kwargs):
+        context = super(PostCreateView, self).get_context_data(**kwargs)
+        context['CREATE'] = True
+        return context
+
     def get_success_url(self):
         messages.success(self.request, u'Postagem criada com sucesso.')
         return super(PostCreateView, self).get_success_url()
@@ -111,6 +116,11 @@ class PostCreateView(CreateView):
 
 class PostUpdateView(UpdateView):
     model = Post
+
+    def get_context_data(self, **kwargs):
+        context = super(PostUpdateView, self).get_context_data(**kwargs)
+        context['CREATE'] = False
+        return context
 
     def get_success_url(self):
         messages.success(self.request, u'Postagem alterada com sucesso.')
