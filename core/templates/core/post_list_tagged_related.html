@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}{{ tag_name|capfirst }}{% endblock %}
 {% block content %}
-    <h1>Postagens da tag: {{ tag_name|capfirst }}</h1>
+    <h3>Posts com a tag: {{ tag_name|capfirst }}</h3>
     <ul>
         {% for post in post_list_tagged_related %}
             <li><a href="{{ post.get_absolute_url }}">{{ post.titulo }}</a></li>

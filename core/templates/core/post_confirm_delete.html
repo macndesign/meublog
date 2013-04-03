@@ -10,15 +10,19 @@
 {% block keywords %}{% for tag in object.tags.all %}{{ tag }}{% if not forloop.last %},{% endif %}{% endfor %}{% endblock %}
 {% block nav %}
     {{ block.super }}
-    <a href="/alterar/{{ object.pk }}">{% trans "Alterar" %}</a>
-    <a href="/excluir/{{ object.pk }}">{% trans "Excluir" %}</a>
+    <li class="menu-alterar"><a href="/alterar/{{ object.pk }}">{% trans "Alterar" %}</a></li>
+    <li class="menu-excluir"><a href="/excluir/{{ object.pk }}">{% trans "Excluir" %}</a></li>
 {% endblock %}
 {% block content %}
-    <form method="post">{% csrf_token %}
-        {% trans "Deseja realmente excluir o artigo?" %}
-        <input type="submit" value="{% trans 'Sim' %}" />
-        <input type="button" onclick="history.back()" value="{% trans 'Não' %}">
-    </form>
+    <div class="alert alert-block alert-error fade in">
+        <form method="post">{% csrf_token %}
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4 class="alert-heading">{% trans "Deseja realmente excluir o artigo?" %}</h4>
+            <br>
+            <input class="btn btn-danger" type="submit" value="{% trans 'Sim' %}" />
+            <input class="btn" type="button" onclick="history.back()" value="{% trans 'Não' %}">
+        </form>
+    </div>
     <header>
         <hgroup>
             <h2>{{ object.titulo }}</h2>
@@ -32,6 +36,13 @@
     {{ object.conteudo|escape|linebreaks }}
     <div class="tags">
         <strong>{% trans "Tags" %}: </strong>
-        {% for tag in post.tags.all %}{{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}
+        {% for tag in post.tags.all %}<span class="label">{{ tag }}</span> {% endfor %}
     </div>
+{% endblock %}
+{% block script %}
+    <script>
+        $(document).ready(function(){
+            $("li.menu-excluir").addClass("active");
+        });
+    </script>
 {% endblock %}

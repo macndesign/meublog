@@ -17,7 +17,7 @@ def post_list(request):
     posts = Post.objects.all()
 
     # Mostra 25 posts por página
-    paginator = Paginator(posts, 5)
+    paginator = Paginator(posts, 3)
 
     page = request.GET.get('page')
     try:
@@ -90,7 +90,7 @@ def delete(request, pk):
 
 class PostListView(ListView):
     model = Post
-    paginate_by = 5
+    paginate_by = 3
 
 
 class PostDetailView(DetailView):

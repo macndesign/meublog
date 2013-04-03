@@ -3,7 +3,8 @@
 {% block nav %}
     {{ block.super }}
     {% if not CREATE %}
-    <li class="menu-alterar"><a href="/alterar/{{ object.pk }}">{% trans "Alterar" %}</a></li>
+        <li class="menu-alterar"><a href="/alterar/{{ object.pk }}">{% trans "Alterar" %}</a></li>
+        <li class="menu-excluir"><a href="/excluir/{{ object.pk }}">{% trans "Excluir" %}</a></li>
     {% endif %}
 {% endblock %}
 {% block content %}

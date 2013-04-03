@@ -5,6 +5,10 @@ body {
     font-family: 'Maven Pro', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+hr {
+    border-top: 1px solid #ddd;
+}
+
 /* Custom container */
 .container-narrow {
     margin: 0 auto;
@@ -71,14 +75,24 @@ div.tags {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
+/* Inset text */
 .insettext {
-    color: #ccc;
-    text-shadow: 1px 1px 0 #999;
+    color: #dd514c;
+    text-shadow: 1px 1px 0 #802420;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.5em;
+    text-transform: uppercase;
 }
 .insettext:hover {
-    color: #eee;
-    text-shadow: 1px 1px 0 #bbb;
+    color: #ee5f5b;
+    text-shadow: 1px 1px 0 #dd514c;
     text-decoration: none;
+}
+
+/* Form alert error */
+.alert-error {
+    margin-top: 20px;
+}
+.alert-error form {
+    margin-bottom: 0;
 }
