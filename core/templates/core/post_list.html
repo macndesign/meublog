@@ -15,7 +15,7 @@
             </hgroup>
             {{ post.conteudo }}
             <div class="tags">
-                <strong>{% trans "Tags" %}: </strong>{% for tag in post.tags.all %}{{ tag }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                <strong>{% trans "Tags" %}: </strong>{% for tag in post.tags.all %}<span class="label">{{ tag }}</span> {% endfor %}
             </div>
         </article>
     {% empty %}
@@ -23,15 +23,16 @@
             <h4>{% trans "Não há artigos" %}</h4>
         </article>
     {% endfor %}
+
     <div class="pagination">
-        {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">{% trans "Anterior" %}</a>
-        {% endif %}
-        <span class="current">
-            {% trans "Página" %} {{ page_obj.number }} {% trans "de" %} {{ page_obj.paginator.num_pages }}
-        </span>
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">{% trans "Próxima" %}</a>
-        {% endif %}
+        <ul>
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}">{% trans "Anterior" %}</a></li>
+            {% endif %}
+            <li><span>{% trans "Página" %} {{ page_obj.number }} {% trans "de" %} {{ page_obj.paginator.num_pages }}</span></li>
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}">{% trans "Próxima" %}</a></li>
+            {% endif %}
+        </ul>
     </div>
 {% endblock %}

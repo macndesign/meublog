@@ -46,10 +46,12 @@
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                <li {% if message.tags %}class="alert alert-{{ message.tags }}"{% endif %}>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </li>
             {% endfor %}
         </ul>
-        <hr>
     {% endif %}
 
     <div class="row-fluid marketing">
@@ -58,7 +60,8 @@
         </div>
 
         <div class="span4">
-            <ul id="tags">
+            <h3>Tags</h3>
+            <ul id="tags" class="nav nav-tabs nav-stacked">
                 {% for tag in tags %}
                     {% if tag.taggit_taggeditem_items.count %}
                         <li><a href="{% url "post:posts-tagged-related" tag.slug %}">{{ tag.name }} ({{ tag.taggit_taggeditem_items.count }})</a></li>

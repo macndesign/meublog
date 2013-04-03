@@ -114,7 +114,7 @@ msgstr "Without articles"
 
 #: .\core\templates\core\post_list.html.py:28
 msgid "Anterior"
-msgstr "Previous"
+msgstr "«"
 
 #: .\core\templates\core\post_list.html.py:31
 msgid "Página"
@@ -126,7 +126,7 @@ msgstr "of"
 
 #: .\core\templates\core\post_list.html.py:34
 msgid "Próxima"
-msgstr "Next"
+msgstr "»"
 
 #: .\meublog\settings.py:37
 msgid "Portuguese Brazil"

@@ -28,7 +28,7 @@ body {
 
 /* Supporting marketing content */
 .marketing {
-    margin: 60px 0;
+    margin: 30px 0;
 }
 .marketing p + h4 {
     margin-top: 28px;
@@ -37,4 +37,25 @@ body {
 /* Select lang */
 form.lang {
     float: right;
+}
+
+/* Messages */
+ul.messages {
+    list-style: none;
+    margin-left: 0;
+}
+ul.errorlist {
+    list-style: none;
+    margin-left: 0;
+    color: #b94a48;
+}
+span.helptext {
+    display: block;
+    color: #999;
+    font-size: 0.8em;
+}
+
+/* tags */
+div.tags {
+    margin: 10px 0 20px;
 }

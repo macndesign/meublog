@@ -115,7 +115,7 @@ msgstr ""
 
 #: .\core\templates\core\post_list.html.py:28
 msgid "Anterior"
-msgstr ""
+msgstr "«"
 
 #: .\core\templates\core\post_list.html.py:31
 msgid "Página"
@@ -127,7 +127,7 @@ msgstr ""
 
 #: .\core\templates\core\post_list.html.py:34
 msgid "Próxima"
-msgstr ""
+msgstr "»"
 
 #: .\meublog\settings.py:37
 msgid "Portuguese Brazil"
