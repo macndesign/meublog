@@ -72,7 +72,13 @@ div.tags {
 }
 
 .insettext {
-    color: #344251;
-    text-shadow: 1px 1px 0 #bad3ed;
+    color: #ccc;
+    text-shadow: 1px 1px 0 #999;
     font-weight: bold;
+    font-size: 1.2em;
+}
+.insettext:hover {
+    color: #eee;
+    text-shadow: 1px 1px 0 #bbb;
+    text-decoration: none;
 }
