@@ -70,3 +70,9 @@ div.tags {
 .nav-tabs.nav-stacked > li > a:hover {
     background-color: rgba(255, 255, 255, 0.4);
 }
+
+.insettext {
+    color: #344251;
+    text-shadow: 1px 1px 0 #bad3ed;
+    font-weight: bold;
+}
