@@ -7,6 +7,11 @@
     {% endif %}
 {% endblock %}
 {% block content %}
+    {% if CREATE %}
+        <h3>{% trans "Criar" %}</h3>
+    {% else %}
+        <h3>{% trans "Alterar" %}</h3>
+    {% endif %}
     <form method="post">{% csrf_token %}
         {{ form.as_p }}
         <input class="btn btn-primary" type="submit" value="Salvar">
