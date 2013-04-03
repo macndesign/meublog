@@ -14,7 +14,7 @@ from taggit.models import Tag
 # FBV - Function Based-Views
 
 def post_list(request):
-    posts = Post.objects.all()
+    posts = Post.objects.ativos()
 
     # Mostra 25 posts por página
     paginator = Paginator(posts, 3)
@@ -91,6 +91,7 @@ def delete(request, pk):
 class PostListView(ListView):
     model = Post
     paginate_by = 3
+    queryset = Post.objects.ativos()
 
 
 class PostDetailView(DetailView):
