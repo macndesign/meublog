@@ -1,6 +1,8 @@
 body {
     padding-top: 20px;
     padding-bottom: 40px;
+    background-image: url("../img/sneaker_mesh_fabric.png");
+    font-family: 'Maven Pro', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* Custom container */
@@ -58,4 +60,13 @@ span.helptext {
 /* tags */
 div.tags {
     margin: 10px 0 20px;
+}
+
+/* Nav */
+.nav-tabs.nav-stacked > li > a {
+    background-color: rgba(240, 240, 240, 0.5);
+}
+
+.nav-tabs.nav-stacked > li > a:hover {
+    background-color: rgba(255, 255, 255, 0.4);
 }

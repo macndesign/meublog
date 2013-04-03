@@ -10,6 +10,7 @@
     <meta name="keywords" content="{% block keywords %}blog,html5,mario,tecnologia,web{% endblock %}">
 
     <!-- Le styles -->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -64,7 +65,11 @@
             <ul id="tags" class="nav nav-tabs nav-stacked">
                 {% for tag in tags %}
                     {% if tag.taggit_taggeditem_items.count %}
-                        <li><a href="{% url "post:posts-tagged-related" tag.slug %}">{{ tag.name }} ({{ tag.taggit_taggeditem_items.count }})</a></li>
+                        <li>
+                            <a href="{% url "post:posts-tagged-related" tag.slug %}">
+                                {{ tag.name }} <span class="label label-info">{{ tag.taggit_taggeditem_items.count }}</span>
+                            </a>
+                        </li>
                     {% endif %}
                 {% endfor %}
             </ul>
