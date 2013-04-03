@@ -50,7 +50,7 @@ msgstr "Base"
 
 #: .\core\templates\base.html.py:13
 msgid "01BLG"
-msgstr "MyBlog EN-US"
+msgstr "Mario's Blog"
 
 #: .\core\templates\base.html.py:16
 msgid "Listar"
@@ -62,7 +62,7 @@ msgstr "New"
 
 #: .\core\templates\base.html.py:45
 msgid "2013 01BLG"
-msgstr "2013 My Blog"
+msgstr "2013 Mario's Blog"
 
 #: .\core\templates\core\post_confirm_delete.html.py:13
 #: .\core\templates\core\post_detail.html.py:8
