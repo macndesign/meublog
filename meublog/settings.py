@@ -117,7 +117,7 @@ WSGI_APPLICATION = 'meublog.wsgi.application'
 
 import django.conf.global_settings as DEFAULT_SETTINGS
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
-    'core.context_processors.view_in_all_pages',
+    'core.context_processors.active_post_tags',
 )
 
 TEMPLATE_DIRS = (

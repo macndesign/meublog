@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load core_utils %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,10 +65,10 @@
             <h3>Tags</h3>
             <ul id="tags" class="nav nav-tabs nav-stacked">
                 {% for tag in tags %}
-                    {% if tag.taggit_taggeditem_items.count %}
+                    {% if tag_full_list|list_count:tag %}
                         <li>
                             <a href="{% url "post:posts-tagged-related" tag.slug %}">
-                                {{ tag.name }} <span class="label label-info">{{ tag.taggit_taggeditem_items.count }}</span>
+                                {{ tag.name }} <span class="label label-info">{{ tag_full_list|list_count:tag }}</span>
                             </a>
                         </li>
                     {% endif %}
