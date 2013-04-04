@@ -34,7 +34,7 @@ def post_list(request):
 
 def post_list_tagged_related(request, slug):
     tag = get_object_or_404(Tag, slug=slug)
-    post_list_tagged_related = Post.objects.filter(tags__name__in=[tag.slug])
+    post_list_tagged_related = Post.objects.ativos().filter(tags__slug__in=[tag.slug])
     return render(request, 'core/post_list_tagged_related.html', {'post_list_tagged_related': post_list_tagged_related,
                                                                   'tag_name': tag.name})
 
