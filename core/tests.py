@@ -23,7 +23,7 @@ class BlogTestCase(TestCase):
             ativo=True
         )
         self.postagem.tags.add('primeira', 'postagem', 'teste')
-        self.postagem_ativa.tags.add('segunda', 'postagem', 'teste')
+        self.postagem_ativa.tags.add('segunda', 'postagem')
         self.resp = self.client.get('/')
 
     def test_criacao_postagem(self):
@@ -40,10 +40,17 @@ class BlogTestCase(TestCase):
         self.assertEqual(self.postagem.data_publicacao.time().minute, datetime.now(tz=pytz.utc).time().minute)
 
     def test_postagem_tem_tags(self):
-        tags = [tag.name for tag in self.postagem.tags.all()]
-        self.assertEqual(len(tags), 3)
+        tags_postagem = [tag.name for tag in self.postagem.tags.all()]
+        tags_postagem_ativa = [tag.name for tag in self.postagem_ativa.tags.all()]
+
+        self.assertEqual(len(tags_postagem), 3)
+        self.assertEqual(len(tags_postagem_ativa), 2)
+
         for tag in ['primeira', 'postagem', 'teste']:
-            self.assertIn(tag, tags)
+            self.assertIn(tag, tags_postagem)
+
+        for tag in ['segunda', 'postagem']:
+            self.assertIn(tag, tags_postagem_ativa)
 
     def test_postagem_inativa_por_default(self):
         self.assertFalse(self.postagem.ativo)
