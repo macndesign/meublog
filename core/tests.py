@@ -16,6 +16,7 @@ class BlogTestCase(TestCase):
             conteudo=u'Conteúdo de teste para o blog'
         )
         self.postagem.tags.add('primeira', 'postagem', 'teste')
+        self.resp = self.client.get('/')
 
     def test_criacao_postagem(self):
         self.assertEqual(self.postagem.__unicode__(), 'Primeira postagem')
@@ -38,3 +39,11 @@ class BlogTestCase(TestCase):
 
     def test_postagem_inativa_por_default(self):
         self.assertFalse(self.postagem.ativo)
+
+    def test_pagina_inicial(self):
+        self.assertEqual(self.resp.status_code, 200)
+        self.assertTemplateUsed(self.resp, 'core/post_list.html')
+
+    def test_postagem_na_pagina_inicial(self):
+        # TODO: self.assertContains(self.resp, 'Primeira postagem') ...
+        pass
