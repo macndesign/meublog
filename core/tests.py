@@ -15,7 +15,15 @@ class BlogTestCase(TestCase):
             sub_titulo=u'Subtítulo da primeira postagem',
             conteudo=u'Conteúdo de teste para o blog'
         )
+        self.postagem_ativa = Post.objects.create(
+            autor=self.usuario,
+            titulo='Segunda postagem',
+            sub_titulo=u'Subtítulo da primeira postagem',
+            conteudo=u'Conteúdo de teste para o blog',
+            ativo=True
+        )
         self.postagem.tags.add('primeira', 'postagem', 'teste')
+        self.postagem_ativa.tags.add('segunda', 'postagem', 'teste')
         self.resp = self.client.get('/')
 
     def test_criacao_postagem(self):
@@ -45,5 +53,4 @@ class BlogTestCase(TestCase):
         self.assertTemplateUsed(self.resp, 'core/post_list.html')
 
     def test_postagem_na_pagina_inicial(self):
-        # TODO: self.assertContains(self.resp, 'Primeira postagem') ...
-        pass
+        self.assertContains(self.resp, 'Segunda postagem')
