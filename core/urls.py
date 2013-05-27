@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from core.views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
+from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
 
 urlpatterns = patterns('',
                        url(r'^$', PostListView.as_view(), name='listar'),

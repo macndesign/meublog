@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
 
+
 class PostQuerySet(models.query.QuerySet):
     def ativos(self):
         return self.filter(ativo=True)

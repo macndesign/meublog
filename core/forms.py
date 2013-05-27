@@ -1,4 +1,4 @@
-from core.models import Post
+from .models import Post
 from django.forms import ModelForm
 
 

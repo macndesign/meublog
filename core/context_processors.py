@@ -1,6 +1,6 @@
 # coding: utf-8
 from taggit.models import Tag
-from core.models import Post
+from .models import Post
 
 
 def active_post_tags(request):

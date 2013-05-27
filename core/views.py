@@ -1,14 +1,14 @@
 # coding: utf-8
-from core.models import Post
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404, redirect
-from core.forms import PostForm
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse_lazy
 from taggit.models import Tag
+from .models import Post
+from .forms import PostForm
 
 
 # FBV - Function Based-Views
