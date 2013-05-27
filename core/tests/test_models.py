@@ -3,11 +3,11 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.utils.timezone import utc
-from .models import Post
+from ..models import Post
 from datetime import datetime
 
 
-class BlogTestCase(TestCase):
+class TestPostModel(TestCase):
     def setUp(self):
         self.usuario = User.objects.create(
             username='admin',
@@ -72,35 +72,6 @@ class BlogTestCase(TestCase):
 
         for tag in ['primeira', 'teste']:
             self.assertNotIn(tag, tags_postagem_ativa)
-
-    def test_postagem_inativa_por_default(self):
-        """
-        Testando se a postagem é criada por padrão como inativa
-        """
-        self.assertFalse(self.postagem.ativo)
-
-    def test_pagina_inicial(self):
-        """
-        Testando se a página inicial está disponível e com o template correto
-        """
-        self.assertEqual(self.resp.status_code, 200)
-        self.assertTemplateUsed(self.resp, 'core/post_list.html')
-
-    def test_postagem_na_pagina_inicial(self):
-        """
-        Testando se aparece apenas a postagem que está ativa na página inicial
-        """
-        self.assertContains(self.resp, 'Segunda postagem')
-        self.assertNotContains(self.resp, 'Primeira postagem')
-
-    def test_tags_corretas_na_pagina_inicial(self):
-        """
-        Testando se tem apenas as tags da postagem ativa na página
-        """
-        self.assertContains(self.resp, 'segunda')
-        self.assertContains(self.resp, 'postagem')
-        self.assertNotContains(self.resp, 'primeira')
-        self.assertNotContains(self.resp, 'teste')
 
     def test_manager_postagens_ativas(self):
         postagens_ativas = Post.objects.ativos()
