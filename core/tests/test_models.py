@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.utils.timezone import utc
-from ..models import Post
+from core.models import Post
 from datetime import datetime
 
 
