@@ -2,7 +2,7 @@
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.contrib.auth.models import User
-from core.models import Post
+from ..models import Post
 
 
 class TestPostList(TestCase):
